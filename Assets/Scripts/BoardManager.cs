@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
+using Unity.AI.Navigation;
 
 public class BoardManager : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class BoardManager : MonoBehaviour
 
 				//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 				GameObject instance =
-					Instantiate(toInstantiate, new Vector3(x, 0f, y), Quaternion.identity) as GameObject;
+					Instantiate(toInstantiate, new Vector3(x *3, 0f, y*3), Quaternion.identity) as GameObject;
 
 				//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 				instance.transform.SetParent(boardHolder);
@@ -75,7 +76,8 @@ public class BoardManager : MonoBehaviour
 		int randomIndex = Random.Range(0, gridPositions.Count);
 
 		//Declare a variable of type Vector3 called randomPosition, set it's value to the entry at randomIndex from our List gridPositions.
-		Vector3 randomPosition = gridPositions[randomIndex];
+		Vector3 randomPosition = gridPositions[randomIndex] *3;
+		randomPosition.y = 0;
 
 		//Remove the entry at randomIndex from the list so that it can't be re-used.
 		gridPositions.RemoveAt(randomIndex);
@@ -118,6 +120,8 @@ public class BoardManager : MonoBehaviour
 
 		//Instantiate the exit tile in the middle of the board
 		Instantiate(exit.Prefab, new Vector3(columns /2, 0f, rows /2), Quaternion.identity);
+
+		GetComponent<NavMeshSurface>().BuildNavMesh();
 	}
 }
 
