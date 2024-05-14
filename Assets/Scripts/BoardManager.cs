@@ -2,21 +2,33 @@
 using System;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
+using Unity.AI.Navigation;
+using UnityEngine.UIElements;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class BoardManager : MonoBehaviour
 {
-	public int columns = 8;//Number of columns in our game board.
-	public int rows = 8;//Number of rows in our game board.
+	int columns;//Number of columns in our game board.
+	int rows;//Number of rows in our game board.
+	public int Enemiesleft;
+	public int TileScale = 3;
 	public Count wallCount = new Count(5, 9);//Lower and upper limit for our random number of walls per level.
-	public BoardPieceData exit;//Prefab to spawn for exit.
+    public Count EnemyCount = new Count(5, 9);
+    public BoardPieceData exit;//Prefab to spawn for exit.
 	public BoardPieceData[] floorTiles;//Array of floor prefabs.
 	public BoardPieceData[] wallTiles;//Array of wall prefabs.                            
 	public BoardPieceData[] outerWallTiles;//Array of outer tile prefabs.
+    public GameObject[] EnemyPrefabs;
+    public GameObject[] PlayerPrefab;
 
-	private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
+
+
+    private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
 	private List<Vector3> gridPositions = new List<Vector3>();  //A list of possible locations to place tiles.
 
-    private void Start()
+	
+
+	private void Start()
     {
         SetupScene();
     }
@@ -24,8 +36,9 @@ public class BoardManager : MonoBehaviour
     //Clears our list gridPositions and prepares it to generate a new board.
     void InitialiseList()
 	{
-		//Clear our list gridPositions.
-		gridPositions.Clear();
+
+        //Clear our list gridPositions.
+        gridPositions.Clear();
 
 		//Loop through x axis (columns).
 		for (int x = 1; x < columns - 1; x++)
@@ -60,7 +73,7 @@ public class BoardManager : MonoBehaviour
 
 				//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 				GameObject instance =
-					Instantiate(toInstantiate, new Vector3(x, 0f, y), Quaternion.identity) as GameObject;
+					Instantiate(toInstantiate, new Vector3(x *3, 0f, y*3), Quaternion.identity) as GameObject;
 
 				//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 				instance.transform.SetParent(boardHolder);
@@ -75,7 +88,8 @@ public class BoardManager : MonoBehaviour
 		int randomIndex = Random.Range(0, gridPositions.Count);
 
 		//Declare a variable of type Vector3 called randomPosition, set it's value to the entry at randomIndex from our List gridPositions.
-		Vector3 randomPosition = gridPositions[randomIndex];
+		Vector3 randomPosition = gridPositions[randomIndex] *3;
+		randomPosition.y = 0;
 
 		//Remove the entry at randomIndex from the list so that it can't be re-used.
 		gridPositions.RemoveAt(randomIndex);
@@ -100,15 +114,54 @@ public class BoardManager : MonoBehaviour
 			GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)].Prefab;
 
 			//Instantiate tileChoice at the position returned by RandomPosition with no change in rotation
-			Instantiate(tileChoice, randomPosition, Quaternion.identity);
+			
+			
+				Instantiate(tileChoice, randomPosition, Quaternion.identity);
+			
+			
 		}
 	}
 
-	//SetupScene initializes our level and calls the previous functions to lay out the game board
-	public void SetupScene()
+    void LayoutEnemiesAtRandom()
+    {
+        int objectCount = Random.Range(EnemyCount.minimum, EnemyCount.maximum + 1);
+
+		for(int i = 0;i < objectCount;i++) 
+		{
+			Vector3 randomPosition = RandomPosition();
+			randomPosition.x *= 1;
+			randomPosition.y *= 1;
+			randomPosition.z *= 1;
+
+            Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Length)],
+                                         randomPosition,
+                                         Quaternion.identity);
+		}
+    }
+
+    void AddPlayer()
+    {
+        
+            Vector3 randomPosition = RandomPosition();
+            randomPosition.x *= 1;
+            randomPosition.y *= 1;
+            randomPosition.z *= 1;
+
+            Instantiate(
+                PlayerPrefab[Random.Range(0, PlayerPrefab.Length)],
+                randomPosition,
+                Quaternion.identity);
+        
+    }
+
+    //SetupScene initializes our level and calls the previous functions to lay out the game board
+    public void SetupScene()
 	{
-		//Creates the outer walls and floor.
-		BoardSetup();
+        columns = Random.Range(10, 35);
+        rows = Random.Range(10, 35);
+
+        //Creates the outer walls and floor.
+        BoardSetup();
 
 		//Reset our list of gridpositions.
 		InitialiseList();
@@ -117,8 +170,24 @@ public class BoardManager : MonoBehaviour
 		LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
 
 		//Instantiate the exit tile in the middle of the board
-		Instantiate(exit.Prefab, new Vector3(columns /2, 0f, rows /2), Quaternion.identity);
-	}
+		if (Enemiesleft == 0)
+		{
+			Instantiate(exit.Prefab, new Vector3((columns*TileScale) / 2 , 0f, (rows*TileScale) / 2), Quaternion.identity);
+        }
+		var hits = Physics.OverlapSphere(new Vector3((columns * TileScale) / 2, 1f, (rows * TileScale) / 2), 0.1f);
+		foreach (var collider in hits)
+			if (!collider.CompareTag("Player"))
+			{
+				Destroy(collider.gameObject);
+			}
+
+		GetComponent<NavMeshSurface>().BuildNavMesh();
+
+		LayoutEnemiesAtRandom();
+
+		AddPlayer();
+
+    }
 }
 
 [Serializable]

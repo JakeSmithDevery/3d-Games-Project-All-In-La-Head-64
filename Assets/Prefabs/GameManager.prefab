@@ -44,11 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4991c60323ecf49821422f5e47ba78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 11
-  rows: 21
+  Enemiesleft: 0
+  TileScale: 3
   wallCount:
     minimum: 10
     maximum: 20
+  EnemyCount:
+    minimum: 5
+    maximum: 9
   exit: {fileID: 11400000, guid: 796f79699e5a23041a5b062a2d6cad4b, type: 2}
   floorTiles:
   - {fileID: 11400000, guid: 96203e4909a2b784489b822f9fe83b41, type: 2}
@@ -60,3 +63,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 971296cbb9d8704418d3880f3960c487, type: 2}
   outerWallTiles:
   - {fileID: 11400000, guid: f1f9e812579b642419d243bfa4008d76, type: 2}
+  EnemyPrefabs:
+  - {fileID: 919132149155446097, guid: 7aa49728cff826549a6c5fcbf122ae70, type: 3}
+  PlayerPrefab:
+  - {fileID: 919132149155446097, guid: 3df7e9ec2150faa4c926a4ff7bf9dbc4, type: 3}
