@@ -18,14 +18,17 @@ public class BoardManager : MonoBehaviour
 	public BoardPieceData[] floorTiles;//Array of floor prefabs.
 	public BoardPieceData[] wallTiles;//Array of wall prefabs.                            
 	public BoardPieceData[] outerWallTiles;//Array of outer tile prefabs.
-	
+    public GameObject[] EnemyPrefabs;
+    public GameObject[] PlayerPrefab;
 
-	
 
-	private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
+
+    private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
 	private List<Vector3> gridPositions = new List<Vector3>();  //A list of possible locations to place tiles.
 
-    private void Start()
+	
+
+	private void Start()
     {
         SetupScene();
     }
@@ -126,28 +129,25 @@ public class BoardManager : MonoBehaviour
 		for(int i = 0;i < objectCount;i++) 
 		{
 			Vector3 randomPosition = RandomPosition();
-			randomPosition.x *= TileScale;
+			randomPosition.x *= 1;
 			randomPosition.y *= 1;
-			randomPosition *= TileScale;
+			randomPosition.z *= 1;
 
-			Enemy Instance = Instantiate(
-				EnemyPrefabs[Random.Range(0, EnemyPrefabs.Length)],
-				randomPosition,
-				Quaternion.identity);
+            Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Length)],
+                                         randomPosition,
+                                         Quaternion.identity);
 		}
     }
 
     void AddPlayer()
     {
         
-
-        
             Vector3 randomPosition = RandomPosition();
-            randomPosition.x *= TileScale;
+            randomPosition.x *= 1;
             randomPosition.y *= 1;
-            randomPosition *= TileScale;
+            randomPosition.z *= 1;
 
-            Player Instance = Instantiate(
+            Instantiate(
                 PlayerPrefab[Random.Range(0, PlayerPrefab.Length)],
                 randomPosition,
                 Quaternion.identity);
