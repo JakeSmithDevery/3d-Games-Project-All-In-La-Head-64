@@ -45,4 +45,11 @@ public class enemy : MonoBehaviour
 
         }
     }
+    private void Update()
+    {
+        if (Health <= 0)
+        { 
+          OnDeath() ;
+        }
+    }
 }
