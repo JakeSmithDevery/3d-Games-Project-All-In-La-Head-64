@@ -33,6 +33,11 @@ public class BoardManager : MonoBehaviour
         SetupScene();
     }
 
+    private void Update()
+    {
+        SpawnExit();
+    }
+
     //Clears our list gridPositions and prepares it to generate a new board.
     void InitialiseList()
 	{
@@ -170,16 +175,7 @@ public class BoardManager : MonoBehaviour
 		LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
 
 		//Instantiate the exit tile in the middle of the board
-		if (Enemiesleft == 0)
-		{
-			Instantiate(exit.Prefab, new Vector3((columns*TileScale) / 2 , 0f, (rows*TileScale) / 2), Quaternion.identity);
-        }
-		var hits = Physics.OverlapSphere(new Vector3((columns * TileScale) / 2, 1f, (rows * TileScale) / 2), 0.1f);
-		foreach (var collider in hits)
-			if (!collider.CompareTag("Player"))
-			{
-				Destroy(collider.gameObject);
-			}
+		
 
 		GetComponent<NavMeshSurface>().BuildNavMesh();
 
@@ -187,6 +183,20 @@ public class BoardManager : MonoBehaviour
 
 		AddPlayer();
 
+    }
+
+	public void SpawnExit()
+	{
+        if (Enemiesleft == 0)
+        {
+            Instantiate(exit.Prefab, new Vector3((columns * TileScale) / 2, 0f, (rows * TileScale) / 2), Quaternion.identity);
+        }
+        var hits = Physics.OverlapSphere(new Vector3((columns * TileScale) / 2, 1f, (rows * TileScale) / 2), 0.1f);
+        foreach (var collider in hits)
+            if (!collider.CompareTag("Player"))
+            {
+                Destroy(collider.gameObject);
+            }
     }
 }
 

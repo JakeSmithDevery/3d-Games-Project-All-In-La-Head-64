@@ -7,7 +7,7 @@ public class PlayerLocomotion : MonoBehaviour
 {
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float walkSpeed = 10;
-    [SerializeField] private float jumpHeight = 7;
+    //[SerializeField] private float jumpHeight = 7;
     [SerializeField] private float lookSensitivity = 0.5f;
     [SerializeField] private float verticalLookLimit = 75;
 
@@ -51,13 +51,13 @@ public class PlayerLocomotion : MonoBehaviour
         controller.Move(currentVelocity *  Time.deltaTime);
     }
 
-    public void OnJump()
-    { 
-        if (isOnGround)
-        {
-            currentVelocity.y += jumpHeight;
-        }
-    }
+    //public void OnJump()
+    //{ 
+    //    if (isOnGround)
+    //    {
+    //        currentVelocity.y += jumpHeight;
+    //    }
+    //}
 
     public void OnMove(InputValue input)
     {
