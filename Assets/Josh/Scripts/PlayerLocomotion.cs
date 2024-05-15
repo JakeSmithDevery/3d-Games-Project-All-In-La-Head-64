@@ -15,16 +15,25 @@ public class PlayerLocomotion : MonoBehaviour
     private Vector2 movementInput;
     private Vector3 currentVelocity;
     private bool isOnGround;
+    public PlayerMeleeAttack meleeAttack;
+    public PlayerGunAttack gunAttack;
+    public PlayerStats stats;
 
+    
     private Camera playerCamera;
     private Vector2 lookInput;
     private float xRotation;
     private float yRotation;
+
+    
     // Start is called before the first frame update
     void Start()
     {
        controller = GetComponent<CharacterController>();
        playerCamera = GetComponentInChildren<Camera>();
+        meleeAttack = GetComponent<PlayerMeleeAttack>();
+        gunAttack = GetComponent<PlayerGunAttack>();
+        stats = GetComponent<PlayerStats>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -78,4 +87,17 @@ public class PlayerLocomotion : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, yRotation, 0);
     
     }
+
+    public void OnAttack(InputValue input) 
+    {
+        meleeAttack.PerformMeleeAttack();
+    }
+
+    public void OnFire(InputValue input) 
+    {
+        gunAttack.CheckAmmo();
+    
+    }
+
+    
 }

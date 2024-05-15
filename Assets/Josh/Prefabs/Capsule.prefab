@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6046988340658995259}
   - component: {fileID: 1049007162680942648}
   - component: {fileID: 8425966218815306392}
+  - component: {fileID: 1564341505281846740}
+  - component: {fileID: -380165485447060419}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -126,9 +128,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: -2
   walkSpeed: 10
-  jumpHeight: 7
   lookSensitivity: 0.5
   verticalLookLimit: 75
+  meleeAttack: {fileID: 0}
+  gunAttack: {fileID: 0}
 --- !u!114 &6046988340658995259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +204,48 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1564341505281846740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751310172465098296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698c4e08accfefc45a1cf54cf84d3817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayCount: 10
+  angle: 45
+  meleeRange: 2
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  damage: 10
+  isAttacking: 0
+--- !u!114 &-380165485447060419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751310172465098296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8521d94f434ca44afd3c3c5c40e5e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 10
+  ammoRegenerationDelay: 2
+  ammoRegenerationRate: 1
+  strongAttackDamage: 30
+  strongAttackRange: 10
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  currentAmmo: 0
+  isAttacking: 0
 --- !u!1 &7543395521739045428
 GameObject:
   m_ObjectHideFlags: 0
