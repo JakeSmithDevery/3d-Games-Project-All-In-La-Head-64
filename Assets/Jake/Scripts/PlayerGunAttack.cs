@@ -13,7 +13,7 @@ public class PlayerGunAttack : MonoBehaviour
     public float strongAttackRange = 10f;
     public LayerMask attackLayer;
 
-    public int currentAmmo;
+    public int currentAmmo = 0;
     public bool isAttacking = false;
     // Start is called before the first frame update
     void Start()

@@ -35,6 +35,15 @@ public class PlayerLocomotion : MonoBehaviour
         gunAttack = GetComponent<PlayerGunAttack>();
         stats = GetComponent<PlayerStats>();
 
+        if (stats != null)
+        {
+            GameManager.instance.SetPlayerStats(stats);
+        }
+        else
+        {
+            Debug.LogError("PlayerStats component not found on the player GameObject.");
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -48,6 +57,15 @@ public class PlayerLocomotion : MonoBehaviour
         {
             currentVelocity.y = 0f;
         
+        }
+
+        if (stats.CurrentExp >= stats.neededExp)
+        {
+            stats.PlayerLevel += 1;
+
+            stats.AvailablePoints += 1;
+
+            stats.neededExp = stats.PlayerLevel * 100;
         }
 
         controller.Move((
@@ -98,6 +116,7 @@ public class PlayerLocomotion : MonoBehaviour
         gunAttack.CheckAmmo();
     
     }
+
 
     
 }

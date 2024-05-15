@@ -261,6 +261,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6645228138453560027, guid: 7c0eb55e33353a94f8f647ebe4bf9d75, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: -3049575334382405551, guid: f89c5965cdc33774daee08428407f58d, type: 3}
     - target: {fileID: 6119694806337476907, guid: 7c0eb55e33353a94f8f647ebe4bf9d75, type: 3}
       propertyPath: Enemiesleft
       value: 1

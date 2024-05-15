@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8571726832812918607}
   - component: {fileID: 6119694806337476907}
+  - component: {fileID: -6645228138453560027}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -68,3 +69,22 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 3df7e9ec2150faa4c926a4ff7bf9dbc4, type: 3}
   PlayerPrefab:
   - {fileID: 4751310172465098296, guid: f89c5965cdc33774daee08428407f58d, type: 3}
+--- !u!114 &-6645228138453560027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581804718253875695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0497a5eb6573a65499309961aa847e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  currentLevel: 1
+  currentXP: 0
+  availableAttributePoints: 0
+  currentHealthAttribute: 0
+  currentAmmoAttribute: 0
+  currentSpeedAttribute: 0

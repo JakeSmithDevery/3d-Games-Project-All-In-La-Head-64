@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8425966218815306392}
   - component: {fileID: 1564341505281846740}
   - component: {fileID: -380165485447060419}
+  - component: {fileID: -3049575334382405551}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -132,6 +133,7 @@ MonoBehaviour:
   verticalLookLimit: 75
   meleeAttack: {fileID: 0}
   gunAttack: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!114 &6046988340658995259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +248,25 @@ MonoBehaviour:
     m_Bits: 0
   currentAmmo: 0
   isAttacking: 0
+--- !u!114 &-3049575334382405551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751310172465098296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7453e0a763f1687459c7f2d80adad667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLevel: 1
+  CurrentExp: 73
+  AvailablePoints: 2
+  HealthPoints: 10
+  AmmoPoints: 5
+  SpeedPoints: 3
+  neededExp: 100
 --- !u!1 &7543395521739045428
 GameObject:
   m_ObjectHideFlags: 0
