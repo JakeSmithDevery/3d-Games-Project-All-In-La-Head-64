@@ -4,15 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class BulletEnemy : MonoBehaviour
 {
-    public float life = 3;
-
-    private void Awake()
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject, life);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-      Destroy(collision.gameObject);
+        if (other.gameObject.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }

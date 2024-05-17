@@ -189,6 +189,8 @@ MonoBehaviour:
   MaxHealth: 100
   Bullet: {fileID: 9135684399897051672, guid: 48ac7f3621dff16478fbb1c333b67324, type: 3}
   BulletSpawner: {fileID: 8538087510164714836}
+  speed: 10
+  timer: 5
 --- !u!114 &4290517304400167479
 MonoBehaviour:
   m_ObjectHideFlags: 0
