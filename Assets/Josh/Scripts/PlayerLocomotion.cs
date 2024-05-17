@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerLocomotion : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PlayerLocomotion : MonoBehaviour
     public PlayerMeleeAttack meleeAttack;
     public PlayerGunAttack gunAttack;
     public PlayerStats stats;
+    public int MaxHealth = 100;
+    public double Health;
 
     
     private Camera playerCamera;
@@ -46,6 +49,8 @@ public class PlayerLocomotion : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        Health = MaxHealth * ((stats.HealthPoints * 0.05) + 1);
     }
 
     // Update is called once per frame
@@ -115,6 +120,14 @@ public class PlayerLocomotion : MonoBehaviour
     {
         gunAttack.CheckAmmo();
     
+    }
+
+    public void TakeDamage()
+    {
+        if (Health <= 0)
+        {
+            SceneManager.LoadScene("MapDemoScene");
+        }
     }
 
 

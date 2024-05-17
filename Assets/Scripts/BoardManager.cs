@@ -36,6 +36,8 @@ public class BoardManager : MonoBehaviour
     private void Update()
     {
         SpawnExit();
+
+
     }
 
     //Clears our list gridPositions and prepares it to generate a new board.
