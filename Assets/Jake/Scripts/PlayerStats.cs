@@ -21,9 +21,30 @@ public class PlayerStats : MonoBehaviour
 
 
 
+    public void HandleExpChange(int newExperiance)
+    {
+        CurrentExp += newExperiance;
+        if (CurrentExp >= neededExp) 
+        {
+            LevelUp();
+        
+        }
+    }
+
+    public void LevelUp()
+    {
+        AvailablePoints++;
+
+        PlayerLevel++;
+
+        CurrentExp = 0;
+        neededExp += 100;
+    }
+
     // Update is called once per frame
     private void Update()
     {
+
         
     }
 }

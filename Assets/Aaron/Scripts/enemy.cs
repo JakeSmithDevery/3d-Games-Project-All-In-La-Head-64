@@ -8,6 +8,15 @@ public class enemy : MonoBehaviour
     public int Health = 100;
     public int MaxHealth = 100;
 
+    public int expAmount = 20;
+
+    public PlayerStats PlayerStats;
+
+    private void Start()
+    {
+        PlayerStats = FindAnyObjectByType<PlayerStats>();
+    }
+
     public void AddHealth(int amount)
     {
         Health = Health + amount;
@@ -23,6 +32,7 @@ public class enemy : MonoBehaviour
         Health -= amount;
         if (Health <= 0)
         {
+            PlayerStats.HandleExpChange(expAmount);
             // Handle enemy death
             Destroy(gameObject);
         }
@@ -30,7 +40,7 @@ public class enemy : MonoBehaviour
 
     public virtual void OnDeath()
     {
-
+        
         Destroy(gameObject);
     }
 

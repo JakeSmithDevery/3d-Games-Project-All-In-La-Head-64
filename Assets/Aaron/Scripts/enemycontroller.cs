@@ -28,18 +28,11 @@ public class enemycontroller : MonoBehaviour
 
     private NavMeshAgent agent;
 
-    void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-
-        
-        
-        
-
-    }
+   
 
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         SetState(EnemyState.Idle);
 
         Player = FindFirstObjectByType<PlayerLocomotion>();

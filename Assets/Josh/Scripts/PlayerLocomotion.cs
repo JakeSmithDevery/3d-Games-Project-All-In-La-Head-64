@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class PlayerLocomotion : MonoBehaviour
     public PlayerMeleeAttack meleeAttack;
     public PlayerGunAttack gunAttack;
     public PlayerStats stats;
-    public int MaxHealth = 100;
+    public double MaxHealth = 100;
     public double Health;
 
     
@@ -36,7 +37,7 @@ public class PlayerLocomotion : MonoBehaviour
        playerCamera = GetComponentInChildren<Camera>();
         meleeAttack = GetComponent<PlayerMeleeAttack>();
         gunAttack = GetComponent<PlayerGunAttack>();
-        stats = GetComponent<PlayerStats>();
+        stats = FindAnyObjectByType<PlayerStats>();
 
         if (stats != null)
         {
@@ -51,6 +52,9 @@ public class PlayerLocomotion : MonoBehaviour
         Cursor.visible = false;
 
         Health = MaxHealth * ((stats.HealthPoints * 0.05) + 1);
+        MaxHealth = MaxHealth * ((stats.HealthPoints * 0.05) + 1);
+        gunAttack.maxAmmo *= (stats.AmmoPoints * 0.1) +1;
+        walkSpeed *= (float)((stats.SpeedPoints * 0.1) + 1);
     }
 
     // Update is called once per frame
@@ -64,14 +68,7 @@ public class PlayerLocomotion : MonoBehaviour
         
         }
 
-        if (stats.CurrentExp >= stats.neededExp)
-        {
-            stats.PlayerLevel += 1;
-
-            stats.AvailablePoints += 1;
-
-            stats.neededExp = stats.PlayerLevel * 100;
-        }
+        
 
         controller.Move((
             transform.forward * movementInput.y +

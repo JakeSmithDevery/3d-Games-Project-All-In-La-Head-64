@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour
     public PlayerStats playerStats; // Reference to the PlayerStats script
     public string saveFilePath;
 
-    private void Awake()
+    private void Start()
     {
+
+        playerStats = FindAnyObjectByType<PlayerStats>();
         if (instance == null)
         {
             instance = this;
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("PlayerStats reference is not null in GameManager.");
             }
 
-            LoadGameData();
+            
         }
         else
         {

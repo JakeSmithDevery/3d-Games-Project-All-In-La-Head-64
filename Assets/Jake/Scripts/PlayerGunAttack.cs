@@ -6,14 +6,14 @@ using UnityEngine.InputSystem;
 public class PlayerGunAttack : MonoBehaviour
 {
 
-    public int maxAmmo = 10;
+    public double maxAmmo = 10;
     public float ammoRegenerationDelay = 2f;
     public float ammoRegenerationRate = 1f;
     public int strongAttackDamage = 30;
     public float strongAttackRange = 10f;
     public LayerMask attackLayer;
 
-    public int currentAmmo = 0;
+    public double currentAmmo = 0;
     public bool isAttacking = false;
     // Start is called before the first frame update
     void Start()
