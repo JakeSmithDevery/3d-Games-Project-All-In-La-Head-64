@@ -20,10 +20,11 @@ public class enemy : MonoBehaviour
 
     public void SubtractHealth(int amount)
     {
-        Health = Health - amount;
+        Health -= amount;
         if (Health <= 0)
         {
-            OnDeath();
+            // Handle enemy death
+            Destroy(gameObject);
         }
     }
 

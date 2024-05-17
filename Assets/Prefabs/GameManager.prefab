@@ -56,7 +56,6 @@ MonoBehaviour:
   exit: {fileID: 11400000, guid: 796f79699e5a23041a5b062a2d6cad4b, type: 2}
   floorTiles:
   - {fileID: 11400000, guid: 96203e4909a2b784489b822f9fe83b41, type: 2}
-  - {fileID: 11400000, guid: 48645234cff5a6c4b942a91ef14909c0, type: 2}
   wallTiles:
   - {fileID: 11400000, guid: f1f9e812579b642419d243bfa4008d76, type: 2}
   - {fileID: 11400000, guid: cfd343cbdf147b04dadfda6c64dadef7, type: 2}
@@ -65,8 +64,8 @@ MonoBehaviour:
   outerWallTiles:
   - {fileID: 11400000, guid: f1f9e812579b642419d243bfa4008d76, type: 2}
   EnemyPrefabs:
-  - {fileID: 919132149155446097, guid: 7aa49728cff826549a6c5fcbf122ae70, type: 3}
-  - {fileID: 919132149155446097, guid: 3df7e9ec2150faa4c926a4ff7bf9dbc4, type: 3}
+  - {fileID: 1372342189333191586, guid: 711fdf9eae925a748bf6a6722277f84b, type: 3}
+  - {fileID: 436894992737218472, guid: ca600fce8cdfdb54e94c8062515b993a, type: 3}
   PlayerPrefab:
   - {fileID: 4751310172465098296, guid: f89c5965cdc33774daee08428407f58d, type: 3}
 --- !u!114 &-6645228138453560027
@@ -81,10 +80,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0497a5eb6573a65499309961aa847e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
   currentLevel: 1
-  currentXP: 0
-  availableAttributePoints: 0
-  currentHealthAttribute: 0
-  currentAmmoAttribute: 0
-  currentSpeedAttribute: 0
+  playerStats: {fileID: 0}
+  saveFilePath: 

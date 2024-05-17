@@ -8,7 +8,6 @@ using UnityEngine.AI;
 public enum EnemyState
 {
     Idle,
-    Patrolling,
     Following,
     Attacking
 }
@@ -20,6 +19,7 @@ public class enemycontroller : MonoBehaviour
     [Header("Required References")]
     
     [SerializeField] private Transform PlayerTransform;
+    [SerializeField] private PlayerLocomotion Player;
 
     [Header("Properties")]
     [SerializeField] private float DetectionRange = 4;
@@ -31,22 +31,28 @@ public class enemycontroller : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        
+        
+        
+
     }
 
     void Start()
     {
-        SetState(EnemyState.Patrolling);
+        SetState(EnemyState.Idle);
+
+        Player = FindFirstObjectByType<PlayerLocomotion>();
+
+        PlayerTransform = Player.transform;
     }
 
     void Update()
     {
         switch (CurrentState)
         {
-            case EnemyState.Patrolling:
-                if (HasReachedDestination())
-                {
-                    
-                }
+            case EnemyState.Idle:
+                
 
                 if (IsPlayerWithinFollowRange())
                 {
@@ -65,7 +71,7 @@ public class enemycontroller : MonoBehaviour
                 }
                 else if (HasLostPlayer())
                 {
-                    SetState(EnemyState.Patrolling);
+                    SetState(EnemyState.Idle);
                 }
                 break;
 
@@ -78,7 +84,7 @@ public class enemycontroller : MonoBehaviour
                 else if (HasLostPlayer())
                 {
                     CancelInvoke("Attack");
-                    SetState(EnemyState.Patrolling);
+                    SetState(EnemyState.Idle);
                 }
                 break;
         }
@@ -92,10 +98,15 @@ public class enemycontroller : MonoBehaviour
 
         switch (CurrentState)
         {
+            case EnemyState.Idle:
 
-            case EnemyState.Patrolling:
-                
+
+                if (IsPlayerWithinFollowRange())
+                {
+                    SetState(EnemyState.Following);
+                }
                 break;
+
 
             case EnemyState.Following:
                 agent.SetDestination(PlayerTransform.position);
@@ -130,20 +141,17 @@ public class enemycontroller : MonoBehaviour
         return Vector3.Distance(transform.position, PlayerTransform.position) <= DetectionRange;
     }
 
-    private bool HasReachedDestination()
-    {
-        return agent.remainingDistance <= agent.stoppingDistance;
-    }
+   
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, DetectionRange);
+        //Gizmos.color = Color.green;
+        //Gizmos.DrawWireSphere(transform.position, DetectionRange);
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, LoseDetectionRange);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, LoseDetectionRange);
 
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, AttackRange);
+        //Gizmos.color = Color.magenta;
+        //Gizmos.DrawWireSphere(transform.position, AttackRange);
     }
 }

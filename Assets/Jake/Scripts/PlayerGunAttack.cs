@@ -9,7 +9,7 @@ public class PlayerGunAttack : MonoBehaviour
     public int maxAmmo = 10;
     public float ammoRegenerationDelay = 2f;
     public float ammoRegenerationRate = 1f;
-    public float strongAttackDamage = 30f;
+    public int strongAttackDamage = 30;
     public float strongAttackRange = 10f;
     public LayerMask attackLayer;
 
@@ -47,12 +47,16 @@ public class PlayerGunAttack : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * strongAttackRange, Color.red, 1f);
         if (Physics.Raycast(transform.position, transform.forward, out hit, strongAttackRange, attackLayer))
         {
-            if (hit.collider != null)
+            if (hit.collider.CompareTag("Enemy"))
             {
-                Enemy health = hit.collider.GetComponent<Enemy>();
-                if (health != null)
+                // Get the enemy's health component
+                enemy enemyHealth = hit.collider.GetComponent<enemy>();
+                if (enemyHealth != null)
                 {
-                    health.TakeDamage(strongAttackDamage);
+                    // Log damage application
+                    Debug.Log($"Damaging enemy: {hit.collider.name}");
+                    // Subtract health from the enemy
+                    enemyHealth.SubtractHealth(strongAttackDamage);
                 }
             }
         }
