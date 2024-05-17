@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3df7e9ec2150faa4c926a4ff7bf9dbc4, type: 3}
       propertyPath: m_Name
-      value: FastEnemy 1
+      value: FastEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -105,6 +105,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3df7e9ec2150faa4c926a4ff7bf9dbc4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1481739959050692253}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3df7e9ec2150faa4c926a4ff7bf9dbc4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3366606172393640662}
   m_SourcePrefab: {fileID: 100100000, guid: 3df7e9ec2150faa4c926a4ff7bf9dbc4, type: 3}
 --- !u!4 &8426214449571322456 stripped
 Transform:
@@ -230,3 +233,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &3366606172393640662
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9197544273590223074}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.5, z: 0}
