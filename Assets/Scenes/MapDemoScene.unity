@@ -251,7 +251,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 83095adec09fc7d449705b1685a36226, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &3965065922668174743
 PrefabInstance:
@@ -267,6 +267,10 @@ PrefabInstance:
       objectReference: {fileID: -3049575334382405551, guid: f89c5965cdc33774daee08428407f58d, type: 3}
     - target: {fileID: 6119694806337476907, guid: 7c0eb55e33353a94f8f647ebe4bf9d75, type: 3}
       propertyPath: Enemiesleft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119694806337476907, guid: 7c0eb55e33353a94f8f647ebe4bf9d75, type: 3}
+      propertyPath: floorTiles.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6581804718253875695, guid: 7c0eb55e33353a94f8f647ebe4bf9d75, type: 3}
