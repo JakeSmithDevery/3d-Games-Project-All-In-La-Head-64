@@ -52,5 +52,25 @@ public class enemy : MonoBehaviour
         { 
           OnDeath() ;
         }
+        Shoot();
+    }
+    public GameObject Bullet;
+    public Transform BulletSpawner;
+    public float speed;
+
+    private float bulletTime;
+    [SerializeField] private float timer =5;
+    private void Shoot()
+    {
+        bulletTime = Time.deltaTime;
+
+        if (bulletTime > 0) return;
+
+        bulletTime = timer;
+
+        GameObject bulletObj = Instantiate(Bullet, BulletSpawner.transform.position, BulletSpawner.transform.rotation) as GameObject;
+        Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
+        bulletRig.AddForce(bulletRig.transform.forward * speed);
+        Destroy(bulletObj, 0.1f);
     }
 }
