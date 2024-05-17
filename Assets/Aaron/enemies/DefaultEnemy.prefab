@@ -482,6 +482,10 @@ MonoBehaviour:
   Damage: 10
   Health: 100
   MaxHealth: 100
+  Bullet: {fileID: 9135684399897051672, guid: 48ac7f3621dff16478fbb1c333b67324, type: 3}
+  BulletSpawner: {fileID: 0}
+  speed: 0
+  timer: 5
 --- !u!54 &-137903360623630990
 Rigidbody:
   m_ObjectHideFlags: 0
