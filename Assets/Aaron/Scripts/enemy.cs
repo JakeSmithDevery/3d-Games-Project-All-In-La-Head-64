@@ -52,4 +52,12 @@ public class enemy : MonoBehaviour
           OnDeath() ;
         }
     }
+    public GameObject Bullet;
+    public Transform BulletSpawner;
+
+    private float bulletTime;
+    private void Shoot()
+    {
+        GameObject bulletObj = Instantiate(Bullet, BulletSpawner.transform.position, BulletSpawner.transform.rotation) as GameObject;
+    }
 }
