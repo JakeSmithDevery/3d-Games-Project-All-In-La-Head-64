@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 public class enemy : MonoBehaviour
 {
     public int Damage = 10;
     public int Health = 100;
     public int MaxHealth = 100;
+    private PlayerLocomotion playerHealth;
 
     public int expAmount = 20;
 
@@ -44,26 +46,27 @@ public class enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void HandleCollision(GameObject otherObject)
-    {
-        if (otherObject.CompareTag("Bullet"))
-        {
-            
-        }
-
-        if (otherObject.CompareTag("Melee"))
-        {
-
-        }
-    }
     private void Update()
     {
         if (Health <= 0)
-        { 
-          OnDeath() ;
+        {
+            OnDeath();
         }
         Shoot();
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (playerHealth == null)
+            {
+                playerHealth = collision.gameObject.GetComponent<PlayerLocomotion>();
+            }
+            playerHealth.TakeDamage(Damage);
+        }
+    }
+
+
     public GameObject Bullet;
     public Transform BulletSpawner;
     public float speed;
@@ -83,4 +86,5 @@ public class enemy : MonoBehaviour
         bulletRig.AddForce(bulletRig.transform.forward * speed);
         Destroy(bulletObj, 0.1f);
     }
+
 }

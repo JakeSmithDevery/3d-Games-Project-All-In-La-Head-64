@@ -1,14 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 [RequireComponent(typeof(Rigidbody))]
 public class BulletEnemy : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public int BulletDamage = 5;
+    private PlayerLocomotion playerHealth;
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.gameObject.tag == "Player")
+        if (collision.gameObject.tag =="Player")
         {
+            if(playerHealth == null) 
+            {
+               playerHealth = collision.gameObject.GetComponent<PlayerLocomotion>();
+            }
+            playerHealth.TakeDamage(BulletDamage);
             Destroy(gameObject);
         }
     }
 }
+

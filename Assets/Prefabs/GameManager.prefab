@@ -64,8 +64,8 @@ MonoBehaviour:
   outerWallTiles:
   - {fileID: 11400000, guid: f1f9e812579b642419d243bfa4008d76, type: 2}
   EnemyPrefabs:
-  - {fileID: 436894992737218472, guid: 04b8866cd8ed02c4dbb924a5e87ddf5e, type: 3}
-  - {fileID: 1372342189333191586, guid: 796fc8adb712dcc489617c0936d2c15b, type: 3}
+  - {fileID: 3947651428713248555, guid: 360095ee9449d1e47b702ed3d1b78447, type: 3}
+  - {fileID: 8118482224484255816, guid: 2b2e18c5401e0d34f8c701b9be994b61, type: 3}
   PlayerPrefab:
   - {fileID: 4751310172465098296, guid: f89c5965cdc33774daee08428407f58d, type: 3}
 --- !u!114 &-6645228138453560027
