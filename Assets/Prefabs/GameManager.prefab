@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8571726832812918607}
   - component: {fileID: 6119694806337476907}
+  - component: {fileID: -6645228138453560027}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,15 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4991c60323ecf49821422f5e47ba78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 11
-  rows: 21
+  Enemiesleft: 0
+  TileScale: 3
   wallCount:
     minimum: 10
     maximum: 20
+  EnemyCount:
+    minimum: 5
+    maximum: 9
   exit: {fileID: 11400000, guid: 796f79699e5a23041a5b062a2d6cad4b, type: 2}
   floorTiles:
   - {fileID: 11400000, guid: 96203e4909a2b784489b822f9fe83b41, type: 2}
-  - {fileID: 11400000, guid: 48645234cff5a6c4b942a91ef14909c0, type: 2}
   wallTiles:
   - {fileID: 11400000, guid: f1f9e812579b642419d243bfa4008d76, type: 2}
   - {fileID: 11400000, guid: cfd343cbdf147b04dadfda6c64dadef7, type: 2}
@@ -60,3 +63,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 971296cbb9d8704418d3880f3960c487, type: 2}
   outerWallTiles:
   - {fileID: 11400000, guid: f1f9e812579b642419d243bfa4008d76, type: 2}
+  EnemyPrefabs:
+  - {fileID: 436894992737218472, guid: 04b8866cd8ed02c4dbb924a5e87ddf5e, type: 3}
+  - {fileID: 1372342189333191586, guid: 796fc8adb712dcc489617c0936d2c15b, type: 3}
+  PlayerPrefab:
+  - {fileID: 4751310172465098296, guid: f89c5965cdc33774daee08428407f58d, type: 3}
+--- !u!114 &-6645228138453560027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581804718253875695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0497a5eb6573a65499309961aa847e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  playerStats: {fileID: 0}
+  saveFilePath: 
