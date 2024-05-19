@@ -9,6 +9,7 @@ TagManager:
   - Ammo_Button
   - HP_Button
   - Speed_Button
+  - Exit_Door
   layers:
   - Default
   - TransparentFX

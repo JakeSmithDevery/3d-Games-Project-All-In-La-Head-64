@@ -22,6 +22,7 @@ public class PlayerLocomotion : MonoBehaviour
     public PlayerStats stats;
     public double MaxHealth = 100;
     public double Health;
+    public GameManager GameManager;
 
 
     private Animator animator;
@@ -41,6 +42,7 @@ public class PlayerLocomotion : MonoBehaviour
         gunAttack = GetComponent<PlayerGunAttack>();
         stats = FindAnyObjectByType<PlayerStats>();
         animator = GetComponent<Animator>();
+        GameManager = FindAnyObjectByType<GameManager>();
         if (stats != null)
         {
             GameManager.instance.SetPlayerStats(stats);
@@ -130,10 +132,15 @@ public class PlayerLocomotion : MonoBehaviour
         Health -= amount;
         if (Health <= 0)
         {
-            SceneManager.LoadScene("MapDemoScene");
+            GameManager.SaveGame();
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            SceneManager.LoadScene("MenuTest");
         }
     }
 
-
     
+
+
+
 }

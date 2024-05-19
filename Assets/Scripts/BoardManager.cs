@@ -5,12 +5,15 @@ using Random = UnityEngine.Random;
 using Unity.AI.Navigation;
 using UnityEngine.UIElements;
 using static UnityEngine.EventSystems.EventTrigger;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+
 
 public class BoardManager : MonoBehaviour
 {
 	int columns;//Number of columns in our game board.
 	int rows;//Number of rows in our game board.
-	public int Enemiesleft;
+	public int Enemiesleft = 0;
 	public int TileScale = 3;
 	public Count wallCount = new Count(5, 9);//Lower and upper limit for our random number of walls per level.
     public Count EnemyCount = new Count(5, 9);
@@ -20,6 +23,8 @@ public class BoardManager : MonoBehaviour
 	public BoardPieceData[] outerWallTiles;//Array of outer tile prefabs.
     public GameObject[] EnemyPrefabs;
     public GameObject[] PlayerPrefab;
+	public GameObject Exit;
+	public GameManager GameManager;
 
 
 
@@ -31,11 +36,17 @@ public class BoardManager : MonoBehaviour
 	private void Start()
     {
         SetupScene();
+
+		GameManager = FindAnyObjectByType<GameManager>();
+		
     }
 
     private void Update()
     {
-        SpawnExit();
+		if (Enemiesleft <= 0)
+		{
+			SpawnExit();
+		}
 
 
     }
@@ -135,6 +146,7 @@ public class BoardManager : MonoBehaviour
 
 		for(int i = 0;i < objectCount;i++) 
 		{
+			Enemiesleft++;
 			Vector3 randomPosition = RandomPosition();
 			randomPosition.x *= 1;
 			randomPosition.y *= 1;
@@ -189,16 +201,31 @@ public class BoardManager : MonoBehaviour
 
 	public void SpawnExit()
 	{
-        if (Enemiesleft == 0)
-        {
-            Instantiate(exit.Prefab, new Vector3((columns * TileScale) / 2, 0f, (rows * TileScale) / 2), Quaternion.identity);
-        }
-        var hits = Physics.OverlapSphere(new Vector3((columns * TileScale) / 2, 1f, (rows * TileScale) / 2), 0.1f);
-        foreach (var collider in hits)
-            if (!collider.CompareTag("Player"))
-            {
-                Destroy(collider.gameObject);
+		Exit = GameObject.FindWithTag("Exit_Door");
+			
+			if (Exit ==  null)
+				Instantiate(exit.Prefab, new Vector3((columns * TileScale) / 2, 0f, (rows * TileScale) / 2), Quaternion.identity);
+			
+			var hits = Physics.OverlapSphere(new Vector3((columns * TileScale) / 2, 1f, (rows * TileScale) / 2), 0.1f);
+		foreach (var collider in hits)
+		{
+			if (!collider.CompareTag("Player"))
+			{
+				Destroy(collider.gameObject);
+			}
+			else
+			{
+                GameManager.SaveGame();
+                UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+                UnityEngine.Cursor.visible = true;
+
+                SceneManager.LoadScene("MenuTest");
             }
+		}
+				
+		
+			
+		
     }
 }
 
