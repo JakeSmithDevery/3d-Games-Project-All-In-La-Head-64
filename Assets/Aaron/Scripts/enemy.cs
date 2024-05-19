@@ -5,10 +5,11 @@ using UnityEngine.InputSystem.HID;
 
 public class enemy : MonoBehaviour
 {
-    public int Damage = 10;
+    public int Damage = 5;
     public int Health = 100;
     public int MaxHealth = 100;
     private PlayerLocomotion playerHealth;
+    private BoardManager boardManager;
 
     public int expAmount = 20;
 
@@ -17,6 +18,7 @@ public class enemy : MonoBehaviour
     private void Start()
     {
         PlayerStats = FindAnyObjectByType<PlayerStats>();
+        boardManager = FindAnyObjectByType<BoardManager>();
     }
 
     public void AddHealth(int amount)
@@ -32,17 +34,13 @@ public class enemy : MonoBehaviour
     public void SubtractHealth(int amount)
     {
         Health -= amount;
-        if (Health <= 0)
-        {
-            PlayerStats.HandleExpChange(expAmount);
-            // Handle enemy death
-            Destroy(gameObject);
-        }
+        
     }
 
     public virtual void OnDeath()
     {
-        
+        boardManager.Enemiesleft--;
+        PlayerStats.HandleExpChange(expAmount);
         Destroy(gameObject);
     }
 
@@ -50,6 +48,7 @@ public class enemy : MonoBehaviour
     {
         if (Health <= 0)
         {
+            
             OnDeath();
         }
         Shoot();

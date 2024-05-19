@@ -22,8 +22,11 @@ public class PlayerLocomotion : MonoBehaviour
     public PlayerStats stats;
     public double MaxHealth = 100;
     public double Health;
+    public GameManager GameManager;
 
-    
+
+    private Animator animator;
+
     private Camera playerCamera;
     private Vector2 lookInput;
     private float xRotation;
@@ -38,7 +41,8 @@ public class PlayerLocomotion : MonoBehaviour
         meleeAttack = GetComponent<PlayerMeleeAttack>();
         gunAttack = GetComponent<PlayerGunAttack>();
         stats = FindAnyObjectByType<PlayerStats>();
-
+        animator = GetComponent<Animator>();
+        GameManager = FindAnyObjectByType<GameManager>();
         if (stats != null)
         {
             GameManager.instance.SetPlayerStats(stats);
@@ -103,20 +107,24 @@ public class PlayerLocomotion : MonoBehaviour
 
         yRotation += lookInput.x;
 
-        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, -180, 0);
         transform.rotation = Quaternion.Euler(0, yRotation, 0);
     
     }
 
     public void OnAttack(InputValue input) 
     {
+        animator.Play("Swing");
         meleeAttack.PerformMeleeAttack();
+        animator.Play("GunIdle");
     }
 
     public void OnFire(InputValue input) 
     {
+        animator.Play("pew");
         gunAttack.CheckAmmo();
-    
+        animator.Play("GunIdle");
+
     }
 
     public void TakeDamage(int amount)
@@ -124,10 +132,15 @@ public class PlayerLocomotion : MonoBehaviour
         Health -= amount;
         if (Health <= 0)
         {
-            SceneManager.LoadScene("MapDemoScene");
+            GameManager.SaveGame();
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            SceneManager.LoadScene("MenuTest");
         }
     }
 
-
     
+
+
+
 }

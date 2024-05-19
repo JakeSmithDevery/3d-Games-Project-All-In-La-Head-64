@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
             saveFilePath = $"{Application.dataPath}/StatData.json";
 
            
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("PlayerStats reference is not null in GameManager.");
             }
 
-            
+            LoadGameData();
         }
         else
         {

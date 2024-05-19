@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Start_Button
+  - Ammo_Button
+  - HP_Button
+  - Speed_Button
+  - Exit_Door
   layers:
   - Default
   - TransparentFX
