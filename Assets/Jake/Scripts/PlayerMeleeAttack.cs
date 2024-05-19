@@ -28,7 +28,7 @@ public class PlayerMeleeAttack : MonoBehaviour
         {
             // Calculate the angle offset for each ray
             float angleOffset = (i - (rayCount - 1) / 2f) * (angle / (rayCount - 1));
-            Vector3 direction = Quaternion.Euler(0, angleOffset, 0) * transform.forward;
+            Vector3 direction = Quaternion.Euler(0, angleOffset, 0) * -transform.forward;
 
             // Draw debug ray for visualization
             Debug.DrawRay(transform.position, direction * meleeRange, Color.red, 1f);

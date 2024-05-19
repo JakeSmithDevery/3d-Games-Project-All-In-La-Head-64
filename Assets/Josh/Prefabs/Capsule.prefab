@@ -102,8 +102,8 @@ GameObject:
   - component: {fileID: 8425966218815306392}
   - component: {fileID: 1564341505281846740}
   - component: {fileID: -380165485447060419}
-  - component: {fileID: -3049575334382405551}
   - component: {fileID: 1477504742637087932}
+  - component: {fileID: -8121085614427420024}
   m_Layer: 3
   m_Name: Capsule
   m_TagString: Player
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayCount: 5
   angle: 45
-  meleeRange: 10
+  meleeRange: 3
   attackLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -340,25 +340,6 @@ MonoBehaviour:
     m_Bits: 8
   currentAmmo: 0
   isAttacking: 0
---- !u!114 &-3049575334382405551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4751310172465098296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7453e0a763f1687459c7f2d80adad667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerLevel: 1
-  CurrentExp: 73
-  AvailablePoints: 2
-  HealthPoints: 10
-  AmmoPoints: 5
-  SpeedPoints: 3
-  neededExp: 100
 --- !u!95 &1477504742637087932
 Animator:
   serializedVersion: 5
@@ -380,6 +361,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &-8121085614427420024
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751310172465098296}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 0fd507193413fe54cae068fd706416a2, type: 2}
+  - {fileID: 7400000, guid: 9e14e85686d292f4787c41a9c5d754c1, type: 2}
+  - {fileID: 7400000, guid: 37f7229b020322143804e344e9a3462d, type: 2}
+  - {fileID: 7400000, guid: ea093d8fd9f6d82418a6baed020bb763, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6198495406121713044
 GameObject:
   m_ObjectHideFlags: 0

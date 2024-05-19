@@ -44,7 +44,7 @@ public class PlayerGunAttack : MonoBehaviour
         currentAmmo--;
 
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward * strongAttackRange, Color.red, 1f);
+        Debug.DrawRay(transform.position, -transform.forward * strongAttackRange, Color.red, 1f);
         if (Physics.Raycast(transform.position, transform.forward, out hit, strongAttackRange, attackLayer))
         {
             if (hit.collider.CompareTag("Enemy"))

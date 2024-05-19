@@ -834,6 +834,8 @@ MonoBehaviour:
   Damage: 5
   Health: 75
   MaxHealth: 75
+  expAmount: 20
+  PlayerStats: {fileID: 0}
   Bullet: {fileID: 9135684399897051672, guid: 48ac7f3621dff16478fbb1c333b67324, type: 3}
   BulletSpawner: {fileID: 3903532872590978862}
   speed: 20
@@ -902,7 +904,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
   m_Height: 4.5
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
