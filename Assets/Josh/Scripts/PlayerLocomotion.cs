@@ -119,8 +119,9 @@ public class PlayerLocomotion : MonoBehaviour
     
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int amount)
     {
+        Health -= amount;
         if (Health <= 0)
         {
             SceneManager.LoadScene("MapDemoScene");
