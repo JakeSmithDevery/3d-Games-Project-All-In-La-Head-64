@@ -411,9 +411,6 @@ PrefabInstance:
       addedObject: {fileID: 6288415219650636022}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7aa49728cff826549a6c5fcbf122ae70, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7919638317299503470}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7aa49728cff826549a6c5fcbf122ae70, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2018495348807373245}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7aa49728cff826549a6c5fcbf122ae70, type: 3}
       insertIndex: -1
@@ -452,37 +449,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7919638317299503470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947651428713248555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
 --- !u!114 &2018495348807373245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,6 +482,8 @@ MonoBehaviour:
   Damage: 10
   Health: 125
   MaxHealth: 125
+  expAmount: 20
+  PlayerStats: {fileID: 0}
   Bullet: {fileID: 9135684399897051672, guid: 48ac7f3621dff16478fbb1c333b67324, type: 3}
   BulletSpawner: {fileID: 2463589262302430516}
   speed: 10
